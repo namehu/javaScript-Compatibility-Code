@@ -49,9 +49,11 @@ function removeEvent(obj, type, fn) {
     if (typeof obj.removeEventListener != 'undefined') {                                      //W3C
         obj.removeEventListener(type, fn, false);
     } else {                                                                                   //IE
-        for (var i in obj.events[type]) {
-            if (obj.events[type][i] == fn) {
-                delete obj.events[type][i];
+        if(obj.event){
+            for (var i in obj.events[type]) {
+                if (obj.events[type][i] == fn) {
+                    delete obj.events[type][i];
+                }
             }
         }
     }
@@ -59,6 +61,14 @@ function removeEvent(obj, type, fn) {
 
 //为每个事件分配一个计数器
 addEvent.ID = 1;
+
+//把IE常用的Event对象配对到W3C中去
+addEvent.fixEvent = function (event) {
+    event.preventDefault = addEvent.fixEvent.preventDefault;
+    event.stopPropagation = addEvent.fixEvent.stopPropagation;
+    event.target = event.srcElement;
+    return event;
+};
 
 //IE阻止默认行为
 addEvent.fixEvent.preventDefault = function () {
@@ -68,13 +78,6 @@ addEvent.fixEvent.preventDefault = function () {
 //IE取消冒泡
 addEvent.fixEvent.stopPropagation = function () {
     this.cancelBubble = true;
-};
-
-//把IE常用的Event对象配对到W3C中去
-addEvent.fixEvent = function (event) {
-    event.preventDefault = addEvent.fixEvent.preventDefault;
-    event.stopPropagation = addEvent.fixEvent.stopPropagation;
-    return event;
 };
 
 //执行事件处理函数

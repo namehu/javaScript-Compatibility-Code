@@ -4,7 +4,7 @@ javaScript 浏览器兼容代码
 代码会跟据每一个功能分成不同的js片段。这里会提供所有的说明。
 
 
-##js-event-bind (事件绑定兼容)  
+## js-event-bind (事件绑定兼容)
     现代绑定中W3C使用的是：addEventListener和removeEventListener。
     IE使用的是attachEvent和detachEvent。我们知道IE的这两个问题多多，并且伴随内存泄漏。所以，解决这些问题非常有必要。
     我们希望解决事件绑定的问题有：
