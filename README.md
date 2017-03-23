@@ -60,3 +60,10 @@ javaScript 浏览器兼容代码
      document.doScroll()方法 ：           兼容浏览器 IE 6+
      document && document.getElementById && document.getElementsByTagName && document.body 轮询：向下兼容pera8-，webkit引擎浏览器525-，Firefox2。
      当然也可以使用document.readyState来进行轮询或者直接使用window.onload来兼容。
+     
+## js-browser-detect (浏览器检测完整版本)
+    这个js提供三个方法。能够兼容所有浏览器
+    BrowserDetect.browser                   浏览器的名称，例如Firefox，IE
+    BrowserDetect.version                   浏览器的版本，比如，7、11
+    BrowserDetect.OS                        浏览器所宿主的操作系统，比如Windows、Linux
+    
