@@ -51,7 +51,7 @@ function addDomLoaded(fn) {
         fn();
     }
 
-    if ((sys.opera && sys.opera < 9) || (sys.firefox && sys.firefox < 3) || (sys.webkit && sys.webkit < 525)) { //兼容第三类
+    if ((webBrowser.opera && webBrowser.opera < 9) || (webBrowser.firefox && webBrowser.firefox < 3) || (webBrowser.webkit && webBrowser.webkit < 525)) { //兼容第三类
         /*timer = setInterval(function () {
          if (/loaded|complete/.test(document.readyState)) { 	//loaded是部分加载，有可能只是DOM加载完毕，complete是完全加载，类似于onload
          doReady();
@@ -68,7 +68,7 @@ function addDomLoaded(fn) {
             fn();
             removeEvent(document, 'DOMContentLoaded', arguments.callee);
         });
-    } else if (sys.ie && sys.ie < 9){                                  //IE 6、7、8
+    } else if (webBrowser.ie && webBrowser.ie < 9){                                  //IE 6、7、8
         var timer = null;
         timer = setInterval(function () {
             try {
